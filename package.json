@@ -20,5 +20,8 @@
     "start": "node server.js"
   },
   "author": "Antoinette Lee",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": "14.x"
+  }
 }
