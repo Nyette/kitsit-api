@@ -16,9 +16,13 @@ app.use(express.json());
 
 // Routes
 
-const authHandler = require("./auth");
+const indexHandler = require("./routes/index");
 
-app.use("/", authHandler);
+app.use("/", indexHandler);
+
+const authHandler = require("./routes/auth");
+
+app.use("/auth", authHandler);
 
 app.listen(process.env.PORT, () => {
   console.log(`See your changes at http://localhost:${process.env.PORT}.`);
