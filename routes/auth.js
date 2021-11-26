@@ -32,8 +32,8 @@ const express = require("express");
 
 const router = express.Router();
 
-router.post("/firebase", async (req, res) => {
-  const uid = req.body.user_id;
+router.post("/firebase", checkJwt, async (req, res) => {
+  const uid = req.body.userId;
   try {
     const customToken = await admin.auth().createCustomToken(uid);
     res.json({
