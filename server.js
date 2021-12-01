@@ -8,9 +8,19 @@ const express = require("express");
 
 const app = express();
 
+// CORS
+
 const cors = require("cors");
 
-app.use(cors());
+const corsOptions = {
+	origin: true,
+	credentials: true,
+	allowedHeaders: ["Content-Type", "Authorization"]
+};
+
+app.use(cors(corsOptions));
+
+// JSON
 
 app.use(express.json());
 
@@ -20,12 +30,16 @@ const indexHandler = require("./routes/index");
 
 app.use("/", indexHandler);
 
-const authHandler = require("./routes/auth");
+const catsHandler = require("./routes/cats");
 
-app.use("/auth", authHandler);
+app.use("/cats", catsHandler);
+
+// const authHandler = require("./routes/auth");
+
+// app.use("/auth", authHandler);
 
 app.listen(process.env.PORT, () => {
-  console.log(`See your changes at http://localhost:${process.env.PORT}.`);
+	console.log(`See your changes at http://localhost:${process.env.PORT}.`);
 });
 
 module.exports = app;
