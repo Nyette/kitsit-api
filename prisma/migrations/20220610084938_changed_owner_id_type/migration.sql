@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Cat" ALTER COLUMN "ownerId" SET DATA TYPE VARCHAR(255);

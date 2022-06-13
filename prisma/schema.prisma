@@ -1,0 +1,20 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Cat {
+  id              Int         @id @default(autoincrement())
+  owner_id        String      @db.VarChar(255)
+  name            String      @db.VarChar(20)
+  fur_pattern     String      @db.VarChar(100)
+  happiness       Int         @default(50)
+}
